@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Expense extends Model
+class Unit extends Model
 {
     use HasFactory;
-    protected $table = 'expenses';
+    protected $table = 'units';
     public $primaryKey = 'id';
 
     protected $fillable = [
         'name',
-        'category',
-        'amount',
-        'particulars',
-        'unit',
+        'landlord_id',
     ];
 }

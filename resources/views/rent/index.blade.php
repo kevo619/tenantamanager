@@ -40,12 +40,12 @@
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            {{$rent->amount_paid}}
+                                            {{number_format($rent->amount_paid)}}
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            {{$rent->date_paid}}
+                                            {{\Carbon\Carbon::parse($rent->date_paid)->format(' jS F Y ')}}
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">

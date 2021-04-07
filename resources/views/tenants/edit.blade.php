@@ -39,8 +39,11 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="unit" class="block font-medium text-sm text-gray-700">Unit</label>
-                            <input type="text" name="unit" id="unit" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                   value="{{ $tenant->unit }}" />
+                            <select name="unit" id="unit" class="form-select block rounded-md shadow-sm mt-1  w-full">
+                                @foreach($units as $unit)
+                                    <option value={{ $unit->name }} {{ $unit->name == $tenant->unit ? 'selected="selected"' : '' }}>{{$unit->name}}</option>
+                                @endforeach
+                            </select>
                             @error('unit')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror

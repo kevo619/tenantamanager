@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tenant;
+use App\Models\Unit;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddTenantRequest;
 
 class TenantsController extends Controller
 {
@@ -25,7 +27,8 @@ class TenantsController extends Controller
      */
     public function create()
     {
-        return view('tenants.create');
+        $units  = Unit::all();
+        return view('tenants.create',compact('units'));
     }
 
     /**
@@ -34,9 +37,10 @@ class TenantsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddTenantRequest $request)
     {
-        //
+        Tenant::create($request->validated());
+        return redirect()->route('tenants.index')->with('success','Tenant Added');
     }
 
     /**
@@ -58,8 +62,8 @@ class TenantsController extends Controller
      */
     public function edit(Tenant $tenant)
     {
-        //return $tenant;
-        return view('tenants.edit',compact('tenant'));
+        $units = Unit::all();
+        return view('tenants.edit',compact('tenant','units'));
     }
 
     /**
@@ -84,6 +88,6 @@ class TenantsController extends Controller
     public function destroy(Tenant $tenant)
     {
         $tenant->delete();
-        return redirect()->route('tenants.index')->with('info','Tenant deleted!');
+        return redirect()->route('tenants.index')->with('info','Tenant '.$tenant->getFullName().' deleted!');
     }
 }

@@ -1,10 +1,10 @@
-@if (count($errors)> 0)
+{{-- @if (count($errors)> 0)
     @foreach ($errors->all() as $error)
         <div class="bg-red-300 font-medium px-6 rounded-sm">
                 {{$error}}
         </div>
     @endforeach
-@endif
+@endif --}}
 
 @if (session('success'))
         <div class="flex items-center bg-blue-300 text-white text-sm font-bold px-4 py-3 rounded-md" role="alert">

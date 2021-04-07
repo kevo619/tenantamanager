@@ -24,6 +24,5 @@ class DemoChart extends BaseChart
         return Chartisan::build()
             ->labels(['Utilities', 'Land rates','Miscellaneous'])
             ->dataset('Expenses', [$utilities,$landrates,$misc]);
-            //->dataset('Land rates', [$landrates]);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expense;
+use App\Models\Unit;
+use App\Http\Requests\AddExpenseRequest;
 
 class ExpensesController extends Controller
 {
@@ -25,7 +27,8 @@ class ExpensesController extends Controller
      */
     public function create()
     {
-        return view('expenses.create');
+        $units = Unit::all();
+        return view('expenses.create',compact('units'));
     }
 
     /**
@@ -34,9 +37,9 @@ class ExpensesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $AddExpenseRequest)
+    public function store(AddExpenseRequest $request)
     {
-        Expense::create($AddExpenseRequest->toArray());
+        Expense::create($request->validated());
         return redirect()->route('expenses.index')->with('success','Expense Added');
 
     }
@@ -61,8 +64,8 @@ class ExpensesController extends Controller
      */
     public function edit(Expense $expense)
     {
-        //return $expense;
-        return view('expenses.edit',compact('expense'));
+        $units = Unit::all();
+        return view('expenses.edit',compact('expense','units'));
     }
 
     /**

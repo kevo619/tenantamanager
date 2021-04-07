@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddRentRequest;
 use App\Models\Rent;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
@@ -36,9 +37,10 @@ class RentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $AddRentRequest)
+    public function store(AddRentRequest $request)
     {
-        return $AddRentRequest;
+        $rent = Rent::create($request->validated());
+        return redirect()->route('rent.index')->with('info','Rent payment for '.$rent->tenant->first_name.' '.$rent->tenant->last_name.' made.');
     }
 
     /**
@@ -60,7 +62,8 @@ class RentController extends Controller
      */
     public function edit(Rent $rent)
     {
-        return $rent;
+        $tenants = Tenant::all();
+        return view('rent.edit',compact('rent','tenants'));
     }
 
     /**
@@ -70,9 +73,10 @@ class RentController extends Controller
      * @param  \App\Models\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rent $rent)
+    public function update(Request $UpdateRentRequest, Rent $rent)
     {
-        //
+        $rent->update($UpdateRentRequest->toArray());
+        return redirect()->route('rent.index')->with('success','Rent payment for '.$rent->tenant->first_name.' '.$rent->tenant->last_name. ' Updated');
     }
 
     /**
@@ -83,6 +87,7 @@ class RentController extends Controller
      */
     public function destroy(Rent $rent)
     {
-        //
+        $rent->delete();
+        return redirect()->route('rent.index')->with('info','Rent payment for '.$rent->tenant->first_name.' '.$rent->tenant->last_name.' deleted!');
     }
 }

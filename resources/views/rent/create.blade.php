@@ -12,10 +12,10 @@
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="amount" class="block font-medium text-sm text-gray-700">Amount</label>
-                            <input type="text" name="amount" id="amount" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <label for="amount_paid" class="block font-medium text-sm text-gray-700">Amount</label>
+                            <input type="text" name="amount_paid" id="amount_paid" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="" />
-                            @error('amount')
+                            @error('amount_paid')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>

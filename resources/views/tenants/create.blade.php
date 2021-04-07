@@ -8,7 +8,7 @@
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="{{url('tenant')}}">
+                <form method="post" action="{{url('tenants')}}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -38,8 +38,11 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="unit" class="block font-medium text-sm text-gray-700">Unit</label>
-                            <input type="text" name="unit" id="unit" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                   value="{{ old('unit', '') }}" />
+                            <select name="unit" id="unit" class="form-select block rounded-md shadow-sm mt-1  w-full">
+                                @foreach($units as $unit)
+                                    <option value={{ $unit->name }}>{{$unit->name}}</option>
+                                @endforeach
+                            </select>
                             @error('unit')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror

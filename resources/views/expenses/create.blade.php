@@ -32,6 +32,15 @@
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <x-jet-label for="unit" value="{{ __('Unit') }}" />
+                            <select name="unit" id="unit" class="form-select block rounded-md shadow-sm mt-1  w-full">
+                                @foreach($units as $unit)
+                                    <option value={{ $unit->id }}>{{$unit->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="amount" class="block font-medium text-sm text-gray-700">Amount</label>
                             <input type="text" name="amount" id="amount" class="form-input rounded-md shadow-sm mt-1 block w-full"

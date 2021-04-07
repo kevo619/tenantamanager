@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddTenantRequest extends FormRequest
+class UpdateRentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class AddTenantRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_number'=>'required|unique|integer',
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'unit'=>'required',
+            'date_paid' => 'required',
+            'amount_paid' => 'required'
         ];
     }
 }

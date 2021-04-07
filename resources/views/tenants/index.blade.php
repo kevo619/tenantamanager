@@ -75,7 +75,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr>No tenants for now</tr>
+                                <tr class="flex items-center" colspan="5">No tenants for now</tr>
                             @endforelse
                         </tbody>
                     </table>
