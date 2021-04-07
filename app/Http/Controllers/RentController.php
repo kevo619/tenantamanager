@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rent;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 
-class TenantsController extends Controller
+class RentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::all();
-        return view('tenants.index')->with('Tenants',$tenants);
+        $rents = Rent::all();
+        return view('rent.index',compact('rents'));
     }
 
     /**
@@ -25,7 +26,8 @@ class TenantsController extends Controller
      */
     public function create()
     {
-        return view('tenants.create');
+        $tenants = Tenant::all();
+        return view('rent.create',compact('tenants'));
     }
 
     /**
@@ -34,56 +36,53 @@ class TenantsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $AddRentRequest)
     {
-        //
+        return $AddRentRequest;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function show(Tenant $tenant)
+    public function show(Rent $rent)
     {
-        return view('tenants.show',compact('tenant'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tenant $tenant)
+    public function edit(Rent $rent)
     {
-        //return $tenant;
-        return view('tenants.edit',compact('tenant'));
+        return $rent;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $UpdateTenantRequest, Tenant $tenant)
+    public function update(Request $request, Rent $rent)
     {
-        $tenant->update($UpdateTenantRequest->toArray());
-        return redirect()->route('tenants.index')->with('success','Tenant details for '.$tenant->getFullName().' updated');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tenant $tenant)
+    public function destroy(Rent $rent)
     {
-        $tenant->delete();
-        return redirect()->route('tenants.index')->with('info','Tenant deleted!');
+        //
     }
 }

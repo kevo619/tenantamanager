@@ -1,81 +1,70 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tenants') }}
+            {{ __('Rent Payments') }}
         </h2>
     </x-slot>
 
-
     <div class="py-4">
-        <div class="px-8 py-4"><a href="{{route('tenants.create')}}" class="inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-300 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">Add tenant</a></div>
-        <div class="bg-white py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="px-8 py-4"><a href="{{route('rent.create')}}" class="inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-300 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">Add Payment</a></div>
+        <div class="bg-gray-200 rounded-sm py-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="">
-                    <table id="Tenant">
+                    <table id="rent">
                         <thead class="text-white font-semibold">
                             <tr>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Id Number
+                                Tenant Name
                                 </th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Name
+                                Amount
                                 </th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Unit
+                                Date paid
                                 </th>
-                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Details
-                                </th>
-                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
                                 Edit
                                 </th>
-                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
                                 Delete
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($Tenants as $tenant)
+                            @forelse ($rents as $rent)
                                 <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            {{$tenant->id_number}}
+                                            {{$rent->tenant->first_name.' '.$rent->tenant->last_name}}
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            {{$tenant->getFullName()}}
-                                        </div>
-                                    </td>
-
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <div class="flex items-center">
-                                            {{$tenant->unit}}
+                                            {{$rent->amount_paid}}
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            <a href={{ route('tenants.show', [$tenant->id]) }} class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">Details</a>
+                                            {{$rent->date_paid}}
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            <a href={{ route('tenants.edit', [$tenant->id]) }} class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">Edit</a>
+                                            <a href={{ route('rent.edit', [$rent->id]) }} class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">Edit</a>
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            <form class="inline-block" action="{{route('tenants.destroy',$tenant->id)}}" method="POST" onsubmit="return confirm('Are you sure? You cannot undo this action');">
+                                            <form class="inline-block" action="{{route('rent.destroy',$rent->id)}}" method="POST" onsubmit="return confirm('Are you sure? You cannot undo this action');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" value="Delete">
                                             </form>
                                         </div>
                                     </td>
-                                    </td>
                                 </tr>
                             @empty
-                                <tr>No tenants for now</tr>
+                                <tr><td class="flex items-center" colspan="5">No rent payments made currently.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -85,7 +74,7 @@
     </div>
     <script>
         $(document).ready( function () {
-        $('#Tenant').DataTable();
+        $('#rent').DataTable();
         } );
     </script>
 </x-app-layout>

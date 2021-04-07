@@ -12,11 +12,16 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/datatables.net-dt/css/jquery.dataTables.css') }}">
 
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}" ></script>
+        <!-- Charting library -->
+        <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+        <!-- Chartisan -->
+        <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -32,9 +37,9 @@
                     </div>
                 </header>
             @endif
-
             <!-- Page Content -->
             <main>
+                @include('layouts.messages')
                 {{ $slot }}
             </main>
         </div>

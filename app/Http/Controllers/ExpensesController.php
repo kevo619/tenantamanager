@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Expense;
 
 class ExpensesController extends Controller
 {
@@ -13,7 +14,8 @@ class ExpensesController extends Controller
      */
     public function index()
     {
-        return view('expenses.index');
+        $expenses = Expense::all();
+        return view('expenses.index')->with('expenses',$expenses);;
     }
 
     /**
@@ -23,7 +25,7 @@ class ExpensesController extends Controller
      */
     public function create()
     {
-        //
+        return view('expenses.create');
     }
 
     /**
@@ -32,9 +34,11 @@ class ExpensesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $AddExpenseRequest)
     {
-        //
+        Expense::create($AddExpenseRequest->toArray());
+        return redirect()->route('expenses.index')->with('success','Expense Added');
+
     }
 
     /**
@@ -43,9 +47,10 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Expense $expense)
     {
-        //
+        return dd($expense);
+        //return view('expenses.show',compact('expense'));
     }
 
     /**
@@ -54,9 +59,10 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Expense $expense)
     {
-        //
+        //return $expense;
+        return view('expenses.edit',compact('expense'));
     }
 
     /**
@@ -66,9 +72,11 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $UpdateExpenseRequest, Expense $expense)
     {
-        //
+        //return $UpdateExpenseRequest;
+        $expense->update($UpdateExpenseRequest->toArray());
+        return redirect()->route('expenses.index')->with('success','Expense Updated');
     }
 
     /**
@@ -77,8 +85,9 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+        return redirect()->route('expenses.index')->with('info','Expense deleted!');
     }
 }

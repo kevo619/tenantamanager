@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\TenantsController;
 use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\RentController;
+use App\Http\Controllers\FetchExpensesController;
+use App\Models\Expense;
 use GuzzleHttp\Middleware;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +25,13 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    //return $utilities = Expense::all()->where('category', '=', 'Utilities')->sum('amount');
     return view('dashboard');
 })->name('dashboard');
 Route::group(['middleware'=>'auth:sanctum'], function ()
 {
-    //Route::get('/tenants', [TenantsController::class,'index'])->name('tenants');
     Route::resource('tenants', TenantsController::class);
     Route::resource('expenses', ExpensesController::class);
-    // Route::get('/expenses', [ExpensesController::class,'index'])->name('expenses');
+    Route::resource('rent', RentController::class);
+    Route::get('/fetch', FetchExpensesController::class)->name('fetch');
 });
