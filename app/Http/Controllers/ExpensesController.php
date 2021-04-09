@@ -39,6 +39,7 @@ class ExpensesController extends Controller
      */
     public function store(AddExpenseRequest $request)
     {
+        return $request;
         Expense::create($request->validated());
         return redirect()->route('expenses.index')->with('success','Expense Added');
 

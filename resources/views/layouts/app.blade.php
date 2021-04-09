@@ -13,11 +13,14 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/datatables.net-dt/css/jquery.dataTables.css') }}">
+        {{-- <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet"> --}}
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" ></script>
+        {{-- <script src="https://unpkg.com/filepond/dist/filepond.js"></script> --}}
+
         <!-- Charting library -->
         <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
         <!-- Chartisan -->

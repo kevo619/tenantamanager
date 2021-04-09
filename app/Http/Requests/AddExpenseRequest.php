@@ -28,6 +28,7 @@ class AddExpenseRequest extends FormRequest
             'category'=>'required',
             'amount'=>'required|min:3',
             'particulars'=>'required',
+            'unit'=>'required',
         ];
     }
 }

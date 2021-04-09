@@ -37,7 +37,7 @@
                             <x-jet-label for="unit" value="{{ __('Unit') }}" />
                             <select name="unit" id="unit" class="form-select block rounded-md shadow-sm mt-1  w-full">
                                 @foreach($units as $unit)
-                                    <option value={{ $unit->id }}>{{$unit->name}}</option>
+                                    <option value={{ $unit->name }}>{{$unit->name}}</option>
                                 @endforeach
                             </select>
                         </div>

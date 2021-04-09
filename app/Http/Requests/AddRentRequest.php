@@ -26,6 +26,7 @@ class AddRentRequest extends FormRequest
         return [
             'amount_paid'=>'required|min:5',
             'date_paid'=>'required',
+            'tenant_id'=>'required',
         ];
     }
 }

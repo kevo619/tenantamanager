@@ -24,7 +24,7 @@ class AddTenantRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_number'=>'required|unique|integer',
+            'id_number'=>'required|integer',
             'first_name'=>'required',
             'last_name'=>'required',
             'unit'=>'required',
