@@ -36,5 +36,5 @@ Route::group(['middleware'=>'auth:sanctum'], function ()
     Route::resource('tenants', TenantsController::class);
     Route::resource('expenses', ExpensesController::class);
     Route::resource('rent', RentController::class);
-    Route::get('/fetch', FetchExpensesController::class)->name('fetch');
+    // Route::get('/fetch', FetchExpensesController::class)->name('fetch');
 });
