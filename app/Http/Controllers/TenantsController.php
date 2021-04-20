@@ -75,6 +75,7 @@ class TenantsController extends Controller
      */
     public function update(Request $UpdateTenantRequest, Tenant $tenant)
     {
+        return $UpdateTenantRequest;
         $tenant->update($UpdateTenantRequest->toArray());
         return redirect()->route('tenants.index')->with('success','Tenant details for '.$tenant->getFullName().' updated');
     }

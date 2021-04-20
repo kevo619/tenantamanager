@@ -42,7 +42,7 @@
                                     <div id="chart2" style="height:300px;"></div>
                                 </div>
                             </div>
-                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-row">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-row w-4/6">
                                 <div class="rounded h-full  justify-center items-center pr-4 py-5">
                                     <div class="rounded bg-green-200 shadow-md h-48 w-48 p-6  flex flex-col justify-around">
                                       <div>

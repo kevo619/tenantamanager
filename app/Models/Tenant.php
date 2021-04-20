@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Rent;
+use App\Models\Document;
 
 class Tenant extends Model
 {
@@ -25,5 +26,9 @@ class Tenant extends Model
     public function rent()
     {
         return $this->hasMany(Rent::class);
+    }
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 }
