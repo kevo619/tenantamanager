@@ -17,17 +17,24 @@
 
                 <div class="mt-4">
                     <x-jet-label for="category" value="{{ __('Category') }}" />
-                    <x-jet-input id="category" class="block mt-1 w-full" type="text" name="category" value="{{ $expense->category }}" required />
+                    <select name="category" id="category" class="form-select block rounded-md shadow-sm mt-1 w-full" value="{{ $expense->category}}" >
+                        <option value="">Select</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Land Rates">Land Rates</option>
+                        <option value="Miscellaneous">Miscellaneous</option>
+                        <option value={{ $expense->category }} {{ $expense->category == $expense->category ? 'selected="selected"' : '' }}>{{$expense->category}}</option>
+                    </select>
+                    {{-- <x-jet-input id="category" class="block mt-1 w-full" type="text" name="category" value="{{ $expense->category }}" required /> --}}
                 </div>
                 <div class="mt-4">
                     <x-jet-label for="amount" value="{{ __('Amount') }}" />
                     <x-jet-input id="amount" class="block mt-1 w-full" type="text" name="amount" required value="{{ $expense->amount }}" />
                 </div>
                 <div class="mt-4">
-                    <x-jet-label for="unit" value="{{ __('Unit') }}" />
-                    <select name="unit" id="unit" class="form-select block rounded-md shadow-sm mt-1  w-full">
-                        @foreach($units as $unit)
-                            <option value={{ $unit->name }} {{ $unit->name == $expense->unit ? 'selected="selected"' : '' }}>{{$unit->name}}</option>
+                    <x-jet-label for="tenant" value="{{ __('Tenant') }}" />
+                    <select name="tenant" id="tenant" class="form-select block rounded-md shadow-sm mt-1  w-full">
+                        @foreach($tenants as $tenant)
+                            <option value={{ $tenant->id }} {{ $tenant->getFullName() == $tenant->getFullName() ? 'selected="selected"' : '' }}>{{$tenant->getFullName()}}</option>
                         @endforeach
                     </select>
                 </div>

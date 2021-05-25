@@ -64,7 +64,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td class="flex items-center" colspan="5">No rent payments made currently.</td></tr>
+                                <tr><td class="flex items-center" colspan="5">No rent payments made at this time.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -74,7 +74,9 @@
     </div>
     <script>
         $(document).ready( function () {
-        $('#rent').DataTable();
+        $('#rent').DataTable({
+            responsive: 'true',
+        });
         } );
     </script>
 </x-app-layout>

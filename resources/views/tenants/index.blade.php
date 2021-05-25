@@ -75,7 +75,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr class="flex items-center" colspan="5">No tenants for now</tr>
+                            <tr><td class="flex items-center" >No tenants to display at this time.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -85,7 +85,10 @@
     </div>
     <script>
         $(document).ready( function () {
-        $('#Tenant').DataTable();
+        $('#Tenant').DataTable({
+            responsive: 'true',
+
+        });
         } );
     </script>
 </x-app-layout>

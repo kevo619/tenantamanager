@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Tenant;
 
 class Expense extends Model
 {
@@ -15,7 +16,13 @@ class Expense extends Model
         'name',
         'category',
         'amount',
+        'date_added',
         'particulars',
-        'unit',
+        'tenant_id',
+        'unit'
     ];
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
 }

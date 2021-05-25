@@ -3804,7 +3804,7 @@ __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-__webpack_require__(/*! ../../node_modules/datatables.net/js/jquery.dataTables.js */ "./node_modules/datatables.net/js/jquery.dataTables.js"); // require( '../../node_modules/filepond/dist/filepond.js' );
+__webpack_require__(/*! ../../node_modules/datatables.net/js/jquery.dataTables.js */ "./node_modules/datatables.net/js/jquery.dataTables.js");
 
 /***/ }),
 

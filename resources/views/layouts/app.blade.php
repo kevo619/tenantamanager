@@ -12,8 +12,11 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/buttons.dataTables.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/datatables.net-dt/css/jquery.dataTables.css') }}">
         <link rel="stylesheet" href="{{ asset('css/filepond/dist/filepond.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/responsive.dataTables.css') }}" rel="stylesheet">
+
 
         @livewireStyles
 
@@ -21,6 +24,12 @@
         <script src="{{ mix('js/app.js') }}"  ></script>
         <script src="{{ mix('js/form.js') }}" ></script>
         <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+        <script src="{{ asset('js/Responsive-2.2.7/js/dataTables.responsive.js') }}" ></script>
+        <script src="{{ asset('js/JSZip-2.5.0/jszip.js') }}" ></script>
+        <script src="{{ asset('js/pdfmake-0.1.36/pdfmake.js') }}" ></script>
+        <script src="{{ asset('js/pdfmake-0.1.36/vfs_fonts.js') }}" ></script>
+        <script src="{{ asset('js/Buttons-1.7.0/js/dataTables.buttons.js') }}" ></script>
+
 
         <!-- Charting library -->
         <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>

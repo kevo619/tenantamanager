@@ -20,7 +20,7 @@
                                 Category
                                 </th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Unit
+                                Tenant
                                 </th>
                                 <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
                                 Particulars
@@ -51,7 +51,7 @@
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            {{$expense->unit}}
+                                            {{$expense->tenant->getFullName()}}
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -61,7 +61,7 @@
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
-                                            {{$expense->amount}}
+                                            {{number_format($expense->amount)}}
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -80,7 +80,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                No expenses currently
+                            <tr><td class="flex items-center" colspan="5">No expense payments made at this time.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -90,7 +90,9 @@
     </div>
     <script>
         $(document).ready( function () {
-        $('#expenses').DataTable();
+        $('#expenses').DataTable({
+            responsive: 'true',
+        });
         } );
     </script>
 </x-app-layout>

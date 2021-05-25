@@ -27,7 +27,9 @@ class AddExpenseRequest extends FormRequest
             'name'=>'required|min:5',
             'category'=>'required',
             'amount'=>'required|min:3',
+            'date_added' => 'required',
             'particulars'=>'required',
+            'tenant_id'=>'required',
             'unit'=>'required',
         ];
     }

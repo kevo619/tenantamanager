@@ -7,6 +7,8 @@ namespace App\Charts;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use App\Models\Expense;
+use Carbon\Carbon;
 
 class SampleChart extends BaseChart
 {
@@ -17,9 +19,13 @@ class SampleChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+        $waterbill = Expense::all()->where('name', '=', 'Water bill')->pluck('amount')->toArray();
+        $date = Expense::all()->where('name', '=', 'Water bill')->pluck('date_added')->toArray();
+        $dates = collect($date)->map(function ($item, $key) {
+            return date_format(new Carbon($item), 'F Y');;
+        })->all();
         return Chartisan::build()
-            ->labels(['First', 'Second', 'Third'])
-            ->dataset('Sample', [1, 2, 3])
-            ->dataset('Sample 2', [3, 2, 1]);
+            ->labels($dates)
+            ->dataset('Water Bill',$waterbill);
     }
 }

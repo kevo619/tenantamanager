@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expense;
-use App\Models\Unit;
+use App\Models\Tenant;
 use App\Http\Requests\AddExpenseRequest;
+use App\Models\Unit;
 
 class ExpensesController extends Controller
 {
@@ -27,8 +28,9 @@ class ExpensesController extends Controller
      */
     public function create()
     {
+        $tenants = Tenant::all();
         $units = Unit::all();
-        return view('expenses.create',compact('units'));
+        return view('expenses.create',compact('tenants','units'));
     }
 
     /**
@@ -39,7 +41,7 @@ class ExpensesController extends Controller
      */
     public function store(AddExpenseRequest $request)
     {
-        return $request;
+        //return ($request->validated());
         Expense::create($request->validated());
         return redirect()->route('expenses.index')->with('success','Expense Added');
 
@@ -53,8 +55,7 @@ class ExpensesController extends Controller
      */
     public function show(Expense $expense)
     {
-        return dd($expense);
-        //return view('expenses.show',compact('expense'));
+        return view('expenses.show',compact('expense'));
     }
 
     /**
@@ -65,8 +66,8 @@ class ExpensesController extends Controller
      */
     public function edit(Expense $expense)
     {
-        $units = Unit::all();
-        return view('expenses.edit',compact('expense','units'));
+        $tenants = Tenant::all();
+        return view('expenses.edit',compact('expense','tenants'));
     }
 
     /**

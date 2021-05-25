@@ -34,10 +34,19 @@
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <x-jet-label for="unit" value="{{ __('Unit') }}" />
+                            <x-jet-label for="Tenant" value="{{ __('Tenant') }}" />
+                            <select name="tenant_id" id="tenant_id" class="form-select block rounded-md shadow-sm mt-1  w-full">
+                                @foreach($tenants as $tenant)
+                                    <option value={{ $tenant->id }}>{{$tenant->getFullName()}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <x-jet-label for="Unit" value="{{ __('Unit') }}" />
                             <select name="unit" id="unit" class="form-select block rounded-md shadow-sm mt-1  w-full">
                                 @foreach($units as $unit)
-                                    <option value={{ $unit->name }}>{{$unit->name}}</option>
+                                    <option value={{ $unit->id }}>{{$unit->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -46,6 +55,15 @@
                             <input type="text" name="amount" id="amount" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('amount', '') }}" />
                             @error('amount')
+                                <p class="text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <label for="date_added" class="block font-medium text-sm text-gray-700">Date paid</label>
+                            <input type="date" name="date_added" id="date_added"  class="form-input rounded-md shadow-sm mt-1 block w-full"
+                                   value="{{ old('date_added', '') }}" />
+                            @error('date_added')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>

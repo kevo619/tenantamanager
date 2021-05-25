@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Expense;
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ExpenseFactory extends Factory
@@ -24,8 +25,10 @@ class ExpenseFactory extends Factory
         return [
             'name' => $this->faker->randomElement(['Water bill', 'Land rates', 'Land Rent', 'Installation of water meters', 'Deposit Refund']),
             'category' => $this->faker->randomElement(['Utilities', 'Land rates']),
+            'unit' => $this->faker->randomElement(['43A','43B','43C']),
             'particulars' => $this->faker->paragraph(3),
             'amount' => $this->faker->numberBetween(700,21000),
+            'tenant_id' => Tenant::factory(),
         ];
     }
 }
