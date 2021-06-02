@@ -19,8 +19,8 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $expenses = Expense::all()->sum('amount');
-        $date = Expense::all()->where('name', '=', 'Water bill')->pluck('date_paid')->toArray();
+        $expenses = Expense::sum('amount');
+        $date = Expense::where('name', '=', 'Water bill')->pluck('date_added')->toArray();
         $dates = collect($date)->map(function ($item, $key) {
             return date_format(new Carbon($item), 'F Y');;
         })->all();

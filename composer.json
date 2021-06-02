@@ -37,7 +37,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+
+            ]
         }
     },
     "autoload": {
@@ -66,4 +68,5 @@
             "@php artisan key:generate --ansi"
         ]
     }
+
 }

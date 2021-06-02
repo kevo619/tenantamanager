@@ -82,116 +82,52 @@
                         </div> --}}
                         <!-- Column -->
                         <div class="flex flex-wrap -mx-1 lg:-mx-4 px-4">
-                            <div class="my-1 px-4 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                            <div class="items-center flex my-1 px-4 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
-                                <!-- Article -->
-                                <article class="overflow-hidden rounded-lg shadow-lg">
+                                <div class="items-center rounded h-full w-1/3 pr-4 py-5">
+                                    <div class="rounded bg-green-200 shadow-md h-48 w-48 p-6  flex flex-col justify-around">
+                                      <div>
+                                        <p class="text-xl uppercase font-semibold text-gray-600">Average Monthly Revenue</p>
+                                      </div>
+                                      <div>
+                                        <p class="text-2xl text-gray-700 font-bold">Ksh {{round($avgrent,0)}}</p>
+                                      </div>
 
-                                    <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                        <h1 class="text-lg">
-                                            <a class="no-underline hover:underline text-black" href="#">
-                                                Article Title 1
-                                            </a>
-                                        </h1>
-                                        <p class="text-grey-darker text-sm">
-                                            11/1/19
-                                        </p>
-                                    </header>
-
-                                    <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                                        <a class="flex items-center no-underline hover:underline text-black" href="#">
-                                            <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
-                                            <p class="ml-2 text-sm">
-                                                Author Name
-                                            </p>
-                                        </a>
-                                        <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
-                                            <span class="hidden">Like</span>
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </footer>
-
-                                </article>
-                                <!-- END Article -->
-
-                            </div>
-                            {{-- <div class=" my-1 px-4 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                                <div class="rounded bg-green-200 shadow-md h-48 w-48 p-6  flex flex-col justify-around">
-                                  <div>
-                                    <p class="text-xl uppercase font-semibold text-gray-600">Average Monthly Revenue</p>
-                                  </div>
-                                  <div>
-                                    <p class="text-2xl text-gray-700 font-bold">Ksh {{round($avgrent,0)}}</p>
-                                  </div>
-
+                                    </div>
                                 </div>
-                            </div> --}}
+
+                            </div>
+
                             <!-- Column -->
                             <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                                <div class="rounded h-full  justify-center items-center w-1/3 pr-4 py-5">
+                                    <div class="rounded bg-red-200 shadow-md h-48 w-48 p-6 flex flex-col justify-around">
+                                      <div>
+                                        <p class="text-xl uppercase font-semibold text-gray-600">Average Monthly Expenses</p>
+                                      </div>
+                                      <div>
+                                        <p class="text-2xl text-gray-700 font-bold">Ksh {{round($avgexp,0)}}</p>
+                                      </div>
 
-                                <!-- Article -->
-                                <article class="overflow-hidden rounded-lg shadow-lg">
+                                    </div>
+                                  </div>
 
-                                    <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                        <h1 class="text-lg">
-                                            <a class="no-underline hover:underline text-black" href="#">
-                                                Article Title 1
-                                            </a>
-                                        </h1>
-                                        <p class="text-grey-darker text-sm">
-                                            11/1/19
-                                        </p>
-                                    </header>
-
-                                    <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                                        <a class="flex items-center no-underline hover:underline text-black" href="#">
-                                            <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
-                                            <p class="ml-2 text-sm">
-                                                Author Name
-                                            </p>
-                                        </a>
-                                        <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
-                                            <span class="hidden">Like</span>
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </footer>
-
-                                </article>
-                                <!-- END Article -->
 
                             </div>
                             <!-- Column -->
                             <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
-                                <!-- Article -->
-                                <article class="overflow-hidden rounded-lg shadow-lg">
+                                <div class="rounded h-full  justify-center items-center w-1/3 py-5">
+                                    <div class="rounded bg-green-200 shadow-md h-48 w-48 p-6 flex flex-col justify-around">
+                                      <div>
+                                        <p class="text-xl uppercase font-semibold text-gray-600">tenant Occupancy rate</p>
+                                      </div>
+                                      <div>
+                                        <p class="text-2xl text-gray-700 font-bold">{{$tenants/$tenants*100}}%</p>
+                                      </div>
 
-                                    <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                        <h1 class="text-lg">
-                                            <a class="no-underline hover:underline text-black" href="#">
-                                                Article Title 1
-                                            </a>
-                                        </h1>
-                                        <p class="text-grey-darker text-sm">
-                                            11/1/19
-                                        </p>
-                                    </header>
-
-                                    <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                                        <a class="flex items-center no-underline hover:underline text-black" href="#">
-                                            <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
-                                            <p class="ml-2 text-sm">
-                                                Author Name
-                                            </p>
-                                        </a>
-                                        <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
-                                            <span class="hidden">Like</span>
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </footer>
-
-                                </article>
-                                <!-- END Article -->
+                                    </div>
+                                  </div>
 
                             </div>
                         </div>
@@ -267,10 +203,16 @@
                           <div class="flex flex-wrap -m-4">
                             <div class="p-4 md:w-1/3">
                               <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                                <div class="p-6">
-                                  {{-- <h2 class="tracking-widest text-xs title-font font-bold text-black mb-1 uppercase">gross monthly revenue</h2> --}}
-                                  <h1 class="title-font text-lg font-bold text-gray-900 mb-3 uppercase">gross rental income</h1>
-                                  <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                                <div class="items-center rounded h-full w-5/6 pr-4 py-5">
+                                    <div class="rounded bg-green-200 shadow-md p-6">
+                                      <div>
+                                        <p class="text-xl uppercase font-semibold text-gray-600">Average Monthly Revenue</p>
+                                      </div>
+                                      <div>
+                                        <p class="text-2xl text-gray-700 font-bold">Ksh {{round($avgrent,0)}}</p>
+                                      </div>
+
+                                    </div>
                                 </div>
                               </div>
                             </div>

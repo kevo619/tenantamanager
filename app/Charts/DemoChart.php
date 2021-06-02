@@ -18,9 +18,9 @@ class DemoChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $utilities = Expense::all()->where('category', '=', 'Utilities')->sum('amount');
-        $landrates = Expense::all()->where('category', '=', 'Land Rates')->sum('amount');
-        $misc = Expense::all()->where('category', '=', 'Miscellaneous')->sum('amount');
+        $utilities = Expense::where('category', '=', 'Utilities')->sum('amount');
+        $landrates = Expense::where('category', '=', 'Land Rates')->sum('amount');
+        $misc = Expense::where('category', '=', 'Miscellaneous')->sum('amount');
         return Chartisan::build()
             ->labels(['Utilities', 'Land rates','Miscellaneous'])
             ->dataset('Expenses', [$utilities,$landrates,$misc]);

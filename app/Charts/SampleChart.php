@@ -19,8 +19,8 @@ class SampleChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $waterbill = Expense::all()->where('name', '=', 'Water bill')->pluck('amount')->toArray();
-        $date = Expense::all()->where('name', '=', 'Water bill')->pluck('date_added')->toArray();
+        $waterbill = Expense::where('name', '=', 'Water bill')->pluck('amount')->toArray();
+        $date = Expense::where('name', '=', 'Water bill')->pluck('date_added')->toArray();
         $dates = collect($date)->map(function ($item, $key) {
             return date_format(new Carbon($item), 'F Y');;
         })->all();
